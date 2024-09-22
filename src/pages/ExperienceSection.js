@@ -1,13 +1,25 @@
-import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Container, Row, Col, Modal } from 'react-bootstrap';
 import { Bitcoin, ShoppingCart, Ambulance, Calculator } from 'lucide-react';
 
 const ExperienceSection = () => {
+  const [hoveredProject, setHoveredProject] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleMouseLeave = () => {
+    setShowModal(false);
+  };
+
+  const handleShowModal = (project) => {
+    setHoveredProject(project);
+    setShowModal(true);
+  };
+
   const companies = [
     {
-      name: 'ABC Company Pvt Ltd',
-      role: 'MERN Full Stack Developer',
-      period: 'October 2023 - Present',
+      name: 'Blaze Web Services Pvt Ltd',
+      role: 'Full Stack Developer',
+      period: 'Aug 2023 - Present',
       project: {
         name: 'Crypto Exchange',
         icon: <Bitcoin size={24} />,
@@ -17,12 +29,12 @@ const ExperienceSection = () => {
           'Integrated multiple blockchain networks for diverse crypto options',
         ],
       },
-      technologies: ['React', 'Node.js', 'MongoDB', 'Bootstrap', 'CSS'],
+      technologies: ['React', 'Node.js', 'Next js', 'SQL', 'Redux Toolkit', 'React Query', 'Bootstrap'],
     },
     {
-      name: 'NOC Company',
-      role: 'Frontend Developer',
-      period: 'Previous Employment',
+      name: 'CyberSapient Technologies Pvt Ltd',
+      role: 'Software Engineer',
+      period: 'May 2023 - Aug 2023',
       project: {
         name: 'E-commerce Web App',
         icon: <ShoppingCart size={24} />,
@@ -32,12 +44,12 @@ const ExperienceSection = () => {
           'Integrated secure payment gateways and user authentication',
         ],
       },
-      technologies: ['Next.js', 'SCSS', 'Redux'],
+      technologies: ['Next.js', 'Redux Toolkit', 'sass'],
     },
     {
-      name: 'MOC Company',
-      role: 'Full Stack Developer',
-      period: 'Previous Employment',
+      name: 'Innovation Incubator Advisory Pvt. Ltd.',
+      role: 'Software Engineer',
+      period: 'Oct 2022 - Apr 2023',
       projects: [
         {
           name: 'Ambulance Booking App',
@@ -58,21 +70,24 @@ const ExperienceSection = () => {
           ],
         },
       ],
-      technologies: ['Next.js', 'Tailwind CSS', 'Node.js', 'PostgreSQL'],
+      technologies: ['React', 'Node.js', 'Next js', 'Redux Toolkit', 'MongoDB', 'Tailwind'],
     },
   ];
 
   return (
-    <Container className="py-5" id="experience">
-      <Row className="justify-content-center mb-5">
+    <Container className="pt-5" id="experience">
+      <Row className="justify-content-center">
         <Col lg={8} className="text-center">
-          <h2 className="display-4 mb-3">Experience</h2>
+          <h2 className="display-5 mb-3">Experience</h2>
         </Col>
       </Row>
-      {companies.map((company, index) => (
-        <Row key={index} className="mb-5">
-          <Col lg={6} className='mx-auto'>
-            <div className="company-card">
+      <Row className="mb-5 d-flex flex-wrap gy-3">
+        {companies.map((company, index) => (
+          <Col key={index} lg={5} className="mx-auto">
+            <div
+              className="company-card"
+              onClick={()=> handleShowModal(company.project || company.projects)}
+            >
               <h3 className="company-name">{company.name}</h3>
               <p className="company-role">{company.role}</p>
               <p className="company-period">{company.period}</p>
@@ -83,11 +98,6 @@ const ExperienceSection = () => {
                     <span className="project-icon">{company.project.icon}</span>
                     {company.project.name}
                   </h4>
-                  <ul className="project-description">
-                    {company.project.description.map((point, pointIndex) => (
-                      <li key={pointIndex}>{point}</li>
-                    ))}
-                  </ul>
                 </div>
               ) : (
                 company.projects.map((project, projectIndex) => (
@@ -96,71 +106,38 @@ const ExperienceSection = () => {
                       <span className="project-icon">{project.icon}</span>
                       {project.name}
                     </h4>
-                    <ul className="project-description">
-                      {project.description.map((point, pointIndex) => (
-                        <li key={pointIndex}>{point}</li>
-                      ))}
-                    </ul>
                   </div>
                 ))
               )}
             </div>
           </Col>
-        </Row>
-      ))}
-      <style jsx>{`
-        .company-card {
-          background: #f8f9fa;
-          border-radius: 8px;
-          padding: 2rem;
-          transition: all 0.3s ease;
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .company-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        .company-name {
-          font-size: 1.8rem;
-          font-weight: bold;
-          margin-bottom: 0.5rem;
-        }
-        .company-role {
-          font-size: 1.2rem;
-          color: #007bff;
-          margin-bottom: 0.5rem;
-        }
-        .company-period,
-        .company-tech {
-          font-size: 1rem;
-          margin-bottom: 0.5rem;
-        }
-        .project-section {
-          margin-top: 1rem;
-        }
-        .project-name {
-          font-size: 1.3rem;
-          font-weight: bold;
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          margin-bottom: 0.5rem;
-        }
-        .project-icon {
-          color: #007bff;
-          display: flex;
-          align-items: center;
-        }
-        .project-description {
-          padding-left: 1.5rem;
-          list-style-position: outside;
-          text-align: left
-        }
-        .project-description li {
-          margin-bottom: 0.5rem;
-          padding-left: 0.5rem;
-        }
-      `}</style>
+        ))}
+      </Row>
+
+      {/* Modal to show the project description */}
+      <Modal show={showModal} onHide={handleMouseLeave} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>{hoveredProject?.name}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <ul>
+            {Array.isArray(hoveredProject)
+              ? hoveredProject.map((project, index) => (
+                  <li key={index}>
+                    <strong>{project.name}</strong>: 
+                    <ul>
+                      {project.description.map((point, pointIndex) => (
+                        <li key={pointIndex}>{point}</li>
+                      ))}
+                    </ul>
+                  </li>
+                ))
+              : hoveredProject?.description.map((point, index) => (
+                  <li key={index}>{point}</li>
+                ))}
+          </ul>
+        </Modal.Body>
+      </Modal>
     </Container>
   );
 };
