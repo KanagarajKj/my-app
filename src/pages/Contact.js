@@ -1,6 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Image, Button, Card } from 'react-bootstrap';
-import { CloudDownload, Briefcase } from 'lucide-react';
+import { Container } from 'react-bootstrap';
 
 const Contact = () => {
   return (

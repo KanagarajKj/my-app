@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
-import { GithubIcon, Linkedin, MessageCircle, Mouse, Hand } from 'lucide-react';
+import { GithubIcon, Linkedin, Mouse, Hand } from 'lucide-react';
 
 const HomeSection = () => {
   const scrollToPortfolio = () => {
@@ -31,14 +31,14 @@ const HomeSection = () => {
             >
               <Linkedin size={24} />
             </a>
-            <a
+            {/* <a
               href="#"
               target="_blank"
               rel="noopener noreferrer"
               className="text-success"
             >
               <MessageCircle size={24} />
-            </a>
+            </a> */}
           </div>
         </Col>
 
