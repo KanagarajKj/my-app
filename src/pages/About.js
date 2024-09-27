@@ -45,7 +45,7 @@ const AboutSection = () => {
           <p className="lead mb-4 text-justify px-4 px-md-0 mt-3">
             I'm a passionate MERN Full Stack Developer with a strong foundation
             in designing and building dynamic web applications. With expertise
-            in MongoDB, Express, React, and Node.js, I create seamless,
+            in MongoDB, Express js, React js, Node js and Next js, I create seamless,
             responsive applications that deliver excellent user experiences.
             From front-end design to back-end logic, I handle every aspect of
             development. I thrive on challenges, continuously seeking

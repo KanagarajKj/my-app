@@ -5,7 +5,7 @@ import ExperienceSection from '../pages/ExperienceSection';
 import HomeSection from '../pages/Home';
 import Skills from '../pages/Skills';
 import Education from '../pages/Education';
-import Contact from '../pages/Contact';
+// import Contact from '../pages/Contact';
 
 const Index = () => {
   return (
@@ -16,7 +16,7 @@ const Index = () => {
       <Skills />
       <ExperienceSection />
       <Education />
-      <Contact />
+      {/* <Contact /> */}
     </div>
   );
 };
