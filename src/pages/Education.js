@@ -1,52 +1,59 @@
-import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
+import { GraduationCap, Award, Calendar } from 'lucide-react';
 
 const educationData = [
   {
-    id: 0,
     school: 'Skill Safari, Coimbatore',
     date: 'Feb 2022 - Oct 2022',
     degree: 'MERN Full Stack Developer',
     grade: 'Certified',
+    icon: <Award size={22} />,
+    highlight: true,
   },
   {
-    id: 1,
     school: 'Nadar Saraswathi College of Engineering and Technology, Theni',
     date: 'June 2015 - Mar 2019',
-    degree: 'UG - BE(Mechanical Engineering)',
+    degree: 'BE - Mechanical Engineering',
     grade: '6.65 CGPA',
+    icon: <GraduationCap size={22} />,
   },
   {
-    id: 2,
     school: 'Nadar Saraswathi Higher Secondary School, Theni',
     date: 'Apr 2014 - Apr 2015',
     degree: '(XII) Science with Computer',
     grade: '69.3%',
+    icon: <GraduationCap size={22} />,
   },
 ];
 
 const Education = () => {
   return (
-    <Container className="pt-5 timeline p-4" id='education'>
-      <h2 className="display-5 mb-3">Education</h2>
-      <Row className="timeline-row">
+    <Container
+      fluid
+      className="py-5 min-vh-100 d-flex flex-column align-items-center justify-content-center"
+      id="education"
+    >
+      <h2 className="edu-heading mb-2">Education</h2>
+      <p className="edu-subheading mb-5">My academic background</p>
+
+      <div className="edu-timeline">
         {educationData.map((edu, index) => (
-          <Col
-            key={edu.id}
-            md={6}
-            className={`timeline-item ${
-              index % 2 === 0 ? 'timeline-left' : 'timeline-right'
-            }`}
-          >
-            <div className="timeline-content">
-              <h4 className="timeline-school">{edu.school}</h4>
-              <p className="timeline-degree">{edu.degree}</p>
-              <p className="timeline-date">{edu.date}</p>
-              <p className="timeline-grade">Grade: {edu.grade}</p>
+          <div key={index} className="edu-timeline-item">
+            <div className="edu-timeline-dot">
+              {edu.icon}
             </div>
-          </Col>
+            <div className={`edu-card ${edu.highlight ? 'edu-card-highlight' : ''}`}>
+              <div className="edu-card-date">
+                <Calendar size={14} className="me-1" />
+                {edu.date}
+              </div>
+              <h4 className="edu-card-school">{edu.school}</h4>
+              <p className="edu-card-degree">{edu.degree}</p>
+              <span className="edu-card-grade">{edu.grade}</span>
+            </div>
+          </div>
         ))}
-      </Row>
+      </div>
     </Container>
   );
 };

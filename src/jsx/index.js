@@ -5,6 +5,7 @@ import ExperienceSection from '../pages/ExperienceSection';
 import HomeSection from '../pages/Home';
 import Skills from '../pages/Skills';
 import Education from '../pages/Education';
+import Footer from '../pages/Footer';
 // import Contact from '../pages/Contact';
 
 const Index = () => {
@@ -16,6 +17,7 @@ const Index = () => {
       <Skills />
       <ExperienceSection />
       <Education />
+      <Footer />
       {/* <Contact /> */}
     </div>
   );

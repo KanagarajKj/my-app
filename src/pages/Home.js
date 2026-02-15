@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Image, Button } from 'react-bootstrap';
-import { GithubIcon, Linkedin, Mouse, Hand } from 'lucide-react';
+import { GithubIcon, Linkedin, Mouse, Hand, CloudDownload } from 'lucide-react';
 
 const HomeSection = () => {
   const scrollToPortfolio = () => {
@@ -78,8 +78,14 @@ const HomeSection = () => {
             web applications, and I'm highly dedicated to my work.
           </p>
           <div className="d-flex flex-wrap justify-content-center justify-content-md-start gap-3 mb-4">
-            <Button variant="outline-primary" href="#" className="px-4 py-2">
-              Say Hello
+            <Button
+              as="a"
+              href="/resume/Resume_KANAGARAJ M.pdf"
+              download="Kanagaraj_M_Resume.pdf"
+              className="home-download-btn"
+            >
+              <CloudDownload size={20} className="me-2" />
+              Download CV
             </Button>
           </div>
         </Col>

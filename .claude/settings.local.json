@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(npm run start:*)",
+      "WebFetch(domain:www.prabakarandev.in)"
+    ]
+  }
+}
