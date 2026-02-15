@@ -1,5 +1,5 @@
 import { Container, Row, Col } from 'react-bootstrap';
-import { Github, Linkedin, Instagram, Mail, MapPin } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin } from 'lucide-react';
 
 const quickLinks = [
   { label: 'Home', href: '#home' },
